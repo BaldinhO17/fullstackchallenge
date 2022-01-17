@@ -1,0 +1,101 @@
+<div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+            <form {{on 'submit' this.submitModal }} class="space-y-8 divide-y divide-gray-200">
+                <div class="space-y-8 divide-y divide-gray-200">
+                    <div>
+                        <div>
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Inserir veículo
+                            </h3>
+                        </div>
+                
+                        <div class="mt-6 grid grid-cols-1 gap-y-2 gap-x-4 sm:grid-cols-6">
+
+                            {{#if this.vehicle.section.all}}
+                                <div class="sm:col-span-6">
+                                    <label for="vehicle-type" class="block text-sm font-medium text-gray-700">
+                                        Tipo do veículo
+                                    </label>
+                                    <div class="mt-1">
+                                        <select required="required" id="type" class="max-w-lg block focus:ring-lime-500 focus:border-lime-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" {{on 'change' this.vehicle.selectType}}>
+                                            <option value="" selected="selected">Selecione uma marca</option>
+                                            {{#each this.vehicle.types as |type|}}
+                                                <option value="{{type.codigo}}">
+                                                    {{type.nome}}
+                                                </option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            {{/if}}
+                            <div class="sm:col-span-6">
+                                <label for="license-plate" class="block text-sm font-medium text-gray-700">
+                                    Placa
+                                </label>
+                                <div class="mt-1">
+                                   {{input type="text" required="required" name="license-plate" id="license-plate" autocomplete="license-plate" class="shadow-sm focus:ring-lime-500 focus:border-lime-500 block w-full sm:text-sm border-gray-300 rounded-md" value=this.vehicle.license_plate}}
+                                </div>
+                            </div>
+                            <div class="sm:col-span-6">
+                                <label for="brand" class="block text-sm font-medium text-gray-700">
+                                    Marca
+                                </label>
+                                <div class="mt-1">
+                                    <select required="required" id="brand" class="max-w-lg block focus:ring-lime-500 focus:border-lime-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" {{on 'change' this.vehicle.selectBrand}}>
+                                        <option value="" selected="selected">Selecione uma marca</option>
+                                        {{#each this.vehicle.brands as |brand|}}
+                                            <option value="{{brand.codigo}}">
+                                                {{brand.nome}}
+                                            </option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="sm:col-span-6">
+                                <label for="model" class="block text-sm font-medium text-gray-700">
+                                    Modelo
+                                </label>
+                                <div class="mt-1">
+                                    <select required="required" id="model" class="max-w-lg block focus:ring-lime-500 focus:border-lime-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" {{on 'change' this.vehicle.selectModel}}>
+                                        <option value="" selected="selected">Selecione um modelo</option>
+                                        {{#each this.vehicle.models as |model|}}
+                                            <option value="{{model.codigo}}">
+                                                {{model.nome}}
+                                            </option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="sm:col-span-6">
+                                <label for="year" class="block text-sm font-medium text-gray-700">
+                                    Ano
+                                </label>
+                                <div class="mt-1">
+                                    <select required="required" id="year" class="max-w-lg block focus:ring-lime-500 focus:border-lime-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" {{on 'change' this.vehicle.selectYear}}>
+                                        <option value="" selected="selected">Selecione um ano</option>
+                                        {{#each this.vehicle.years as |year|}}
+                                            <option value="{{year.codigo}}">
+                                                {{year.nome}}
+                                            </option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-5">
+                    <button class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-lime-600 text-base font-medium hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 sm:text-sm">
+                        Inserir
+                    </button>
+                    <button {{on "click" this.modal.closeCreateVehicle}} type="button" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-transparent text-base font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 sm:text-sm">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

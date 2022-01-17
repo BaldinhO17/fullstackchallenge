@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .active-header-section {
+        @apply border-lime-400 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium;
+    }
+
+    .inactive-header-section {
+        @apply border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium;
+    }
+    .sm-active-header-section {
+        @apply bg-indigo-50 border-lime-400 text-lime-600 block pl-3 pr-4 py-2 border-l-4 text-base font-medium;
+    }
+
+    .sm-inactive-header-section {
+        @apply border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium;
+    }
+}
