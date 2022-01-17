@@ -3,28 +3,6 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import fetch from 'fetch';
 
-class Section {
-    @tracked all;
-    @tracked car;
-    @tracked motorcycle;
-    @tracked truck;
-    
-
-    constructor(all=true, car=false, motorcycle=false, truck=false) {
-        this.all = all
-        this.car = car
-        this.motorcycle = motorcycle
-        this.truck = truck
-    }
-
-    clearSection() {
-        this.all = false
-        this.car = false
-        this.motorcycle = false
-        this.truck = false
-    }
-}
-
 export default class VehicleService extends Service {
     @inject store
 
@@ -40,9 +18,6 @@ export default class VehicleService extends Service {
     year = ''
     @tracked
     type = ''
-
-    @tracked
-    section = new Section();
 
     @tracked
     vehicles = this.retriveVehicles()
@@ -80,13 +55,6 @@ export default class VehicleService extends Service {
 
     fipeBaseUrl = "https://parallelum.com.br/fipe/api/v1"
 
-    @action
-    setSection(sectionName) {
-        this.section.clearSection()
-        this.section[sectionName || 'all'] = true
-        this.selectedType = this.getActiveFilter()
-        this.type = this.types.find(type => type.codigo == e.target.value)?.nome || ''
-    }
 
     async updateVehicle() {
         let vehicle = this.store.findRecord('vehicle', this.id).then(record=>{
@@ -164,16 +132,10 @@ export default class VehicleService extends Service {
         this.vehicles = this.store.peekAll('vehicle')
     }
 
-    getActiveFilter() {
-        if (this.section.car) return 'carros'
-        else if (this.section.truck) return 'caminhoes'
-        else if (this.section.motorcycle) return 'motos'
-        else return this.selectedType
-    }
 
     @action
     async getBrands() {
-        await fetch(`${this.fipeBaseUrl}/${this.getActiveFilter()}/marcas`)
+        await fetch(`${this.fipeBaseUrl}/${this.selectedType}/marcas`)
         .then((response)=> response.json() )
         .then((data) => this.brands = data)
         .catch((error)=>console.log(error))
@@ -181,7 +143,7 @@ export default class VehicleService extends Service {
 
     @action
     async getModels() {
-        await fetch(`${this.fipeBaseUrl}/${this.getActiveFilter()}/marcas/${this.selectedBrand}/modelos`)
+        await fetch(`${this.fipeBaseUrl}/${this.selectedType}/marcas/${this.selectedBrand}/modelos`)
         .then((response)=> response.json() )
         .then((data) => this.models = data.modelos)
         .catch((error)=>console.log(error))
@@ -189,7 +151,7 @@ export default class VehicleService extends Service {
 
     @action
     async getYears() {
-        await fetch(`${this.fipeBaseUrl}/${this.getActiveFilter()}/marcas/${this.selectedBrand}/modelos/${this.selectedModel}/anos`)
+        await fetch(`${this.fipeBaseUrl}/${this.selectedType}/marcas/${this.selectedBrand}/modelos/${this.selectedModel}/anos`)
         .then((response)=> response.json() )
         .then((data) => this.years = data)
         .catch((error)=>console.log(error))

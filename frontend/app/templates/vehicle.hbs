@@ -1,6 +1,6 @@
 {{page-title "Vehicle"}}
 <div class="min-h-full bg-gray-100">
-    <Header @hideSection={{true}}/>
+    <Header/>
     <div class="py-10 mt-10 px-5">
         <form {{on 'submit' this.updateVehicle }} class="space-y-8 divide-y divide-gray-200 w-full max-w-lg mx-auto">
             <div class="space-y-8 divide-y divide-gray-200">
@@ -16,11 +16,11 @@
                         <div class="sm:col-span-6">
                             <label for="vehicle-type" class="block text-sm font-medium text-gray-700">
                                 Tipo do veículo: 
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-medium bg-green-100 text-green-800">
                                     {{model.type}}
                                 </span>
                             </label>
-                            <div class="mt-1">
+                            <div class="my-2">
                                 <select required="required" id="type" class="max-w-lg block focus:ring-lime-500 focus:border-lime-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" {{on 'change' this.vehicle.selectType}}>
                                     <option value="" selected="selected">Selecione uma marca</option>
                                     {{#each this.vehicle.types as |type|}}
@@ -34,22 +34,22 @@
                         <div class="sm:col-span-6">
                             <label for="license-plate" class="block text-sm font-medium text-gray-700">
                                 Placa: 
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-medium bg-green-100 text-green-800">
                                     {{model.license_plate}}
                                 </span>
                             </label>
-                            <div class="mt-1">
+                            <div class="my-2">
                                 {{input type="text" required="required" name="license-plate" id="license-plate" autocomplete="license-plate" class="shadow-sm focus:ring-lime-500 focus:border-lime-500 block w-full sm:text-sm border-gray-300 rounded-md" value=this.vehicle.license_plate}}
                             </div>
                         </div>
                         <div class="sm:col-span-6">
                             <label for="brand" class="block text-sm font-medium text-gray-700">
                                 Marca: 
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-medium bg-green-100 text-green-800">
                                     {{model.brand}}
                                 </span>
                             </label>
-                            <div class="mt-1">
+                            <div class="my-2">
                                 <select required="required" id="brand" class="max-w-lg block focus:ring-lime-500 focus:border-lime-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" {{on 'change' this.vehicle.selectBrand}}>
                                     <option value="" selected="selected">Selecione uma marca</option>
                                     {{#each this.vehicle.brands as |brand|}}
@@ -63,11 +63,11 @@
                         <div class="sm:col-span-6">
                             <label for="model" class="block text-sm font-medium text-gray-700">
                                 Modelo: 
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-medium bg-green-100 text-green-800">
                                     {{model.model}}
                                 </span>
                             </label>
-                            <div class="mt-1">
+                            <div class="my-2">
                                 <select required="required" id="model" class="max-w-lg block focus:ring-lime-500 focus:border-lime-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" {{on 'change' this.vehicle.selectModel}}>
                                     <option value="" selected="selected">Selecione um modelo</option>
                                     {{#each this.vehicle.models as |model|}}
@@ -81,11 +81,11 @@
                         <div class="sm:col-span-6">
                             <label for="year" class="block text-sm font-medium text-gray-700">
                                 Ano: 
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-medium bg-green-100 text-green-800">
                                     {{model.year}}
                                 </span>
                             </label>
-                            <div class="mt-1">
+                            <div class="my-2">
                                 <select required="required" id="year" class="max-w-lg block focus:ring-lime-500 focus:border-lime-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" {{on 'change' this.vehicle.selectYear}}>
                                     <option value="" selected="selected">Selecione um ano</option>
                                     {{#each this.vehicle.years as |year|}}
