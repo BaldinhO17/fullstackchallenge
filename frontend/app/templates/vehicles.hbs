@@ -6,17 +6,17 @@
     {{/if}}
 
     <div class="py-10 mt-10">
-        <header class="flex justify-between px-4 sm:px-6 lg:px-8 lg:mb-8 max-w-7xl mx-auto text-gray-900 items-center">
+        <header class="flex justify-between px-4 sm:px-6 lg:px-8 mb-8 max-w-7xl mx-auto text-gray-900 items-center">
             <div>
                 <h1 class="text-3xl font-bold leading-tight">
-                    Todos os veiculos
+                    Todos os veículos
                 </h1>
             </div>
             <button {{on "click" this.modal.openCreateVehicle}} type="button" class="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md bg-lime-400 hover:bg-lime-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-300 text-center">
                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                 </svg>
-                <span class="hidden lg:inline">Incluir veiculo</span>
+                <span class="hidden lg:inline">Incluir veículo</span>
             </button>
         </header>
         <main>
@@ -49,20 +49,20 @@
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
                                         {{#each this.vehicle.vehicles as |vehicle|}}
-                                            <tr class="cursor-pointer hover:bg-gray-50" {{on "click" (fn this.editVehicles vehicle)}}>
-                                                <td class="px-6 py-4 whitespace-nowrap">
+                                            <tr class="cursor-pointer hover:bg-gray-50">
+                                                <td class="px-6 py-4 whitespace-nowrap" {{on "click" (fn this.editVehicles vehicle)}}>
                                                     {{vehicle.license_plate}}
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                <td class="px-6 py-4 whitespace-nowrap" {{on "click" (fn this.editVehicles vehicle)}}>
                                                     {{vehicle.brand}}
                                                 </td>
-                                                <td class="hidden md:table-cell px-6 py-4 whitespace-nowrap">
+                                                <td class="hidden md:table-cell px-6 py-4 whitespace-nowrap" {{on "click" (fn this.editVehicles vehicle)}}>
                                                     {{vehicle.model}}
                                                 </td>
-                                                <td class="hidden lg:table-cell px-6 py-4 whitespace-nowrap">
+                                                <td class="hidden lg:table-cell px-6 py-4 whitespace-nowrap" {{on "click" (fn this.editVehicles vehicle)}}>
                                                     {{vehicle.type}}
                                                 </td>
-                                                <td class="hidden lg:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td class="hidden lg:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-500" {{on "click" (fn this.editVehicles vehicle)}}>
                                                     {{vehicle.year}}
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
